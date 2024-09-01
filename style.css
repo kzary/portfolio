@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  margin: 0;
+  min-height: 50vh;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.3;
+  z-index: 1;
+}
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  opacity: 0.8;
+  perspective: 400px;
+  margin-top: 90%;
+}
+.cub {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  align-items: center;
+}
+.floor {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  padding: 0;
+  margin: 0;
+  background: repeating-conic-gradient(#808080 0% 25%, black 25% 50%);
+  background-size: 10% 10%;
+  transform: rotateX(60deg);
+  filter: blur(3px);
+  oapcity: .9;
+}
+.floor::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 0;
+  background: radial-gradient(white 10%, #1a1a1a 30%, black 60%);
+  opacity: .9;
+}
+.cube {
+  position: relative;
+  width: calc(var(--cube) * 100);
+  height: calc(var(--cube) * 100);
+  transform-style: preserve-3d;
+  perspective: none;
+  transform: rotateX(-30deg) rotateY(60deg);
+}
+.cube:nth-child(1) {
+  margin-top: -100px;
+}
+.cube:nth-child(2) {
+  margin-top: -40px;
+}
+.cube:nth-child(3) {
+  margin-top: -60px;
+}
+.cube div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.cube div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, var(--bg), #1a1a1a);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(calc(calc(var(--cube) * 100)/2));
+}
+.top {
+  position: absolute;
+  width: calc(var(--cube) * 100);
+  height: calc(var(--cube) * 100);
+  background: #1a1a1a;
+  transform: rotateX(90deg) translateZ(calc(calc(var(--cube) * 100)/2));
+}
+.top::before {
+  content: '';
+  position: absolute;
+  width: calc(var(--cube) * 100);
+  height: calc(var(--cube) * 100);
+  background: var(--bg);
+  transform: translateZ(calc(var(--cube)* -150));
+  filter: blur(20px);
+  box-shadow: 
+    0 0 100px var(--bg),
+    0 0 200px var(--bg),
+    0 0 300px var(--bg),
+    0 0 400px var(--bg);
+}
+.main {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.navbar {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 20%;
+  top: 9em;
+}
+.navbar ul {
+  transform: skewY(15deg);
+  background: #3e3f46;
+}
+.navbar ul li {
+  position: relative;
+  list-style: none;
+  font-size: 1em;
+  padding: 15px;
+}
+.navbar ul li:hover, .navbar ul li:active{
+  color: white;
+}
